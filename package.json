@@ -1,0 +1,62 @@
+{
+  "$schema": "https://www.raycast.com/schemas/extension.json",
+  "name": "twenty",
+  "title": "Twenty",
+  "description": "Create object records instantly",
+  "icon": "logo.png",
+  "author": "nabhag8848",
+  "categories": [
+    "CRM"
+  ],
+  "license": "MIT",
+  "commands": [
+    {
+      "name": "create-object-record",
+      "title": "Create Object Record",
+      "description": "Create Object Record",
+      "mode": "view"
+    },
+    {
+      "name": "create-status-report",
+      "title": "Create Status Report",
+      "description": "Create Status Report",
+      "mode": "view"
+    },
+    {
+      "name": "unresolved-reports",
+      "title": "Menu Bar Reports",
+      "description": "Shows Unresolved Status Reports",
+      "mode": "menu-bar"
+    }
+  ],
+  "preferences": [
+    {
+      "name": "api_token",
+      "description": "Enter your Twenty API Token",
+      "type": "password",
+      "title": "API Token",
+      "required": true
+    }
+  ],
+  "dependencies": {
+    "@raycast/api": "^1.68.1",
+    "@raycast/utils": "^1.12.5",
+    "fuse.js": "^7.0.0",
+    "node-fetch": "^3.3.2"
+  },
+  "devDependencies": {
+    "@raycast/eslint-config": "^1.0.6",
+    "@types/node": "20.8.10",
+    "@types/react": "18.2.27",
+    "eslint": "^8.51.0",
+    "prettier": "^3.0.3",
+    "typescript": "^5.2.2"
+  },
+  "scripts": {
+    "build": "ray build -e dist",
+    "dev": "ray develop",
+    "fix-lint": "ray lint --fix",
+    "lint": "ray lint",
+    "publish": "npx @raycast/api@latest publish"
+  }
+}
