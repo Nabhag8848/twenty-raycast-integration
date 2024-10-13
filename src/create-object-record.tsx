@@ -1,103 +1,72 @@
-import { Action, ActionPanel, Icon, List, environment, useNavigation } from "@raycast/api";
+import { Action, ActionPanel, Icon, List } from "@raycast/api";
 import { useEffect, useState } from "react";
 import { randomUUID } from "crypto";
 
-import { StatusFilterDropdown } from "./components";
-import { NoFilteredReports, NoStatusReports, ReportDetails, OpenUpdateReportForm } from "./pages";
+import { DataModel } from "./services/zod/schema/dataModelSchema";
+import twenty from "./services/TwentySDK";
+import { ObjectIcons } from "./enum/tag";
 
-import { Monitor, Reports, StatusPage } from "./types/api";
-import { DefaultOptionValue, StatusListIcons } from "./enum/tag";
-import { filterByQuery, filterByStatus } from "./helper";
-
-export default function UpdateStatusReports() {
-  const [allReports, setAllReports] = useState<Array<Reports> | undefined>();
-  const [allPages, setAllPages] = useState<Array<StatusPage> | undefined>();
-  const [allMonitors, setAllMonitors] = useState<Array<Monitor> | undefined>();
-  const { push } = useNavigation();
+export default function CreateObjectRecord() {
+  const [activeDataModels, setActiveDataModels] = useState<DataModel | undefined>();
   const [isLoading, setIsLoading] = useState<boolean>(true);
-  const [reports, setReports] = useState<Array<Reports>>();
-  const isEmptyView = allReports && allReports.length < 1;
-  const isNonEmptyView = reports && reports.length > 0;
-  const [filterBy, setFilterBy] = useState<string>(DefaultOptionValue);
-  const [searchQuery, setSearchQuery] = useState<string>("");
+
   useEffect(
     function () {
       async function onLoad() {
-        setAllPages([]);
-        setAllMonitors([]);
-        setAllReports([]);
-        setReports([]);
+        const [activeDataModels] = await Promise.all([twenty.getActiveDataModels()]);
+        setActiveDataModels(activeDataModels);
         setIsLoading(false);
       }
 
-      if (allReports || allMonitors || allPages || reports) return;
+      if (activeDataModels) return;
       onLoad();
     },
-    [allReports, isLoading, reports],
+    [isLoading],
   );
 
-  useEffect(function () {
-    if (environment.launchContext) {
-      const {
-        allPages,
-        report,
-        allMonitors,
-      }: { report: Reports; allPages: Array<StatusPage>; allMonitors: Array<Monitor> } =
-        environment.launchContext.payload;
-
-      push(OpenUpdateReportForm({ report, allMonitors, allPages }));
-    }
-  }, []);
-
-  function handleSearchQuery(query: string) {
-    const reportsWithQuery = filterByQuery({ allReports, query });
-    const expectedReports = filterByStatus({ filterBy, reportsWithQuery });
-
-    setReports(expectedReports);
-    setSearchQuery(query);
-  }
+  const standardActiveModel = activeDataModels?.filter((model) => !model.isCustom);
+  const customActiveModel = activeDataModels?.filter((model) => model.isCustom);
 
   return (
-    <List
-      isLoading={isLoading}
-      navigationTitle="Create Object Record"
-      searchBarPlaceholder="Search Object Record"
-      isShowingDetail={isNonEmptyView}
-      searchBarAccessory={
-        !isEmptyView && !isLoading ? (
-          <StatusFilterDropdown values={{ setReports, allReports, setFilterBy, filterBy, searchQuery }} />
-        ) : null
-      }
-      searchText={searchQuery}
-      onSearchTextChange={handleSearchQuery}
-      throttle
-    >
-      {isNonEmptyView ? (
-        <List.Section title="Select Report to Update">
-          {reports.map((report) => {
-            const { id, status, title } = report;
-
-            return (
-              <List.Item
-                id={id.toString()}
-                title={title}
-                icon={StatusListIcons[status]}
-                actions={
-                  <ActionPanel>
-                    <Action title="Select" icon={Icon.List} />
-                  </ActionPanel>
-                }
-                key={randomUUID().toString()}
-                detail={<ReportDetails report={report} allPages={allPages} allMonitors={allMonitors} />}
-              />
-            );
-          })}
-        </List.Section>
-      ) : isEmptyView ? (
-        <NoStatusReports />
-      ) : (
-        <NoFilteredReports values={{ setReports, allReports, filterBy, setFilterBy, setSearchQuery, searchQuery }} />
-      )}
+    <List isLoading={isLoading} navigationTitle="Create Object Record" searchBarPlaceholder="Search Object Record">
+      <List.Section title="Standard Object">
+        {standardActiveModel?.map((model) => {
+          const { id, description, labelPlural, icon } = model;
+          return (
+            <List.Item
+              id={id}
+              title={labelPlural}
+              subtitle={description}
+              actions={
+                <ActionPanel>
+                  <Action title="Create record" icon={Icon.List} />
+                </ActionPanel>
+              }
+              icon={ObjectIcons[icon] ?? Icon.BulletPoints}
+              key={randomUUID().toString()}
+            />
+          );
+        })}
+      </List.Section>
+      <List.Section title="Custom Object">
+        {customActiveModel?.map((model) => {
+          const { id, description, labelPlural } = model;
+          return (
+            <List.Item
+              id={id}
+              title={labelPlural}
+              subtitle={description}
+              icon={Icon.BulletPoints}
+              actions={
+                <ActionPanel>
+                  <Action title="Create record" icon={Icon.List} />
+                </ActionPanel>
+              }
+              key={randomUUID().toString()}
+            />
+          );
+        })}
+      </List.Section>
     </List>
   );
 }

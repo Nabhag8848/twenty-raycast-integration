@@ -1,4 +1,4 @@
-import { Color } from "@raycast/api";
+import { Color, Icon } from "@raycast/api";
 
 interface Tag {
   color: string;
@@ -99,3 +99,11 @@ export const StatusOption = [
     icon: StatusIcons[Status.RESOLVED],
   },
 ];
+
+export const ObjectIcons: Record<string, string> = {
+  IconCheckbox: Icon.CheckList,
+  IconTargetArrow: Icon.BullsEyeMissed,
+  IconNotes: Icon.Receipt,
+  IconBuildingSkyscraper: Icon.Building,
+  IconUser: Icon.Person,
+};
