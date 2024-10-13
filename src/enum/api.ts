@@ -1,9 +1,9 @@
 import { Image, Keyboard, Toast } from "@raycast/api";
 
 export enum Api {
-  URL = "https://api-demo.twenty.com/rest/",
+  URL = "https://api-demo.twenty.com/rest",
   KEY = "Authorization",
-  USER_GUIDE = "https://twenty.com/",
+  USER_GUIDE = "https://twenty.com",
 }
 
 export const FailureToast = {

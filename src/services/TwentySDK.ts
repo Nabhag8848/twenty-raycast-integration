@@ -1,8 +1,7 @@
 import { getPreferenceValues } from "@raycast/api";
-import { Api } from "../enum/api";
 
 class TwentySDK {
-  private url: string = Api.URL;
+  private url!: string;
   private token!: string;
 
   constructor() {

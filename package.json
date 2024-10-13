@@ -36,6 +36,13 @@
       "type": "password",
       "title": "API Token",
       "required": true
+    },
+    {
+      "name": "self_host_api_url",
+      "description": "Enter your self-host API URL (Optional)",
+      "type": "textfield",
+      "title": "Self Host API URL",
+      "required": false
     }
   ],
   "dependencies": {
