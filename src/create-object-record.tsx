@@ -39,7 +39,13 @@ export default function CreateObjectRecord() {
               subtitle={description}
               actions={
                 <ActionPanel>
-                  <Action title="Create record" icon={Icon.List} />
+                  <Action
+                    title="Create Record"
+                    icon={Icon.List}
+                    onAction={async () => {
+                      await twenty.getRecordFieldsForDataModel(id);
+                    }}
+                  />
                 </ActionPanel>
               }
               icon={ObjectIcons[icon] ?? Icon.BulletPoints}
@@ -59,7 +65,13 @@ export default function CreateObjectRecord() {
               icon={Icon.BulletPoints}
               actions={
                 <ActionPanel>
-                  <Action title="Create record" icon={Icon.List} />
+                  <Action
+                    title="Create Record"
+                    icon={Icon.List}
+                    onAction={async () => {
+                      await twenty.getRecordFieldsForDataModel(id);
+                    }}
+                  />
                 </ActionPanel>
               }
               key={randomUUID().toString()}
