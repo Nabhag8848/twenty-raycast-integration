@@ -8,7 +8,7 @@ export const dataModelSchema = z.array(
     namePlural: z.string(),
     labelSingular: z.string(),
     labelPlural: z.string(),
-    description: z.string(),
+    description: z.string().nullable(),
     icon: z.string(),
     isCustom: z.boolean(),
     isActive: z.boolean(),

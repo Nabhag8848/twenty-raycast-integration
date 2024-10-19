@@ -8,7 +8,7 @@ export const dataModelFieldsSchema = z.array(
     namePlural: z.string(),
     labelSingular: z.string(),
     labelPlural: z.string(),
-    description: z.string(),
+    description: z.string().nullable(),
     isCustom: z.boolean(),
     isActive: z.boolean(),
     isSystem: z.boolean(),
