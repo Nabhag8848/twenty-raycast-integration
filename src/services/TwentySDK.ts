@@ -62,7 +62,6 @@ class TwentySDK {
       const response = await fetch(this.url + `/${namePlural}`, {
         method: "POST",
         headers: {
-          "Content-Type": "application/json",
           [Api.KEY]: this.token,
         },
         body: {
