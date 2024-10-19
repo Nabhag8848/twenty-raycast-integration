@@ -56,6 +56,29 @@ class TwentySDK {
       throw new Error(err as string);
     }
   }
+
+  async createObjectRecord(namePlural: string, bodyParam: any) {
+    try {
+      const response = await fetch(this.url + `/${namePlural}`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          [Api.KEY]: this.token,
+        },
+        body: {
+          ...bodyParam,
+        },
+      });
+
+      if (response.ok) {
+        return true;
+      }
+
+      return false;
+    } catch (err) {
+      throw new Error(err as string);
+    }
+  }
 }
 
 const twenty = new TwentySDK();

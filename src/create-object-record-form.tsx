@@ -6,6 +6,7 @@ import { FailureToast } from "./enum/api";
 import { DataModelWithFields, ObjectRecordFields } from "./services/zod/schema/recordFieldSchema";
 import { Title } from "./components";
 import { useForm } from "@raycast/utils";
+import twenty from "./services/TwentySDK";
 
 function CreateObjectRecordForm({
   objectRecordMetadata,
@@ -14,6 +15,7 @@ function CreateObjectRecordForm({
   objectRecordMetadata: DataModelWithFields;
   fields: ObjectRecordFields;
 }) {
+  const { namePlural } = objectRecordMetadata;
   const { primary } = fields;
   const { handleSubmit, itemProps } = useForm({
     async onSubmit(values) {
@@ -22,7 +24,7 @@ function CreateObjectRecordForm({
         title: "Creating Object Record",
       });
 
-      const isSuccess = true;
+      const isSuccess = await twenty.createObjectRecord(namePlural, values);
 
       if (isSuccess) {
         await showHUD(`${objectRecordMetadata.labelSingular} Created 🎉`, {
