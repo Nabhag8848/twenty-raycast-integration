@@ -1,14 +1,16 @@
-import { Action, ActionPanel, Icon, List } from "@raycast/api";
+import { Action, ActionPanel, Icon, List, useNavigation } from "@raycast/api";
 import { useEffect, useState } from "react";
 import { randomUUID } from "crypto";
 
 import { DataModel } from "./services/zod/schema/dataModelSchema";
 import twenty from "./services/TwentySDK";
 import { ObjectIcons } from "./enum/tag";
+import { OpenCreateObjectRecordForm } from "./pages";
 
 export default function CreateObjectRecord() {
   const [activeDataModels, setActiveDataModels] = useState<DataModel | undefined>();
   const [isLoading, setIsLoading] = useState<boolean>(true);
+  const { push } = useNavigation();
 
   useEffect(
     function () {
@@ -29,21 +31,22 @@ export default function CreateObjectRecord() {
 
   return (
     <List isLoading={isLoading} navigationTitle="Create Object Record" searchBarPlaceholder="Search Object Record">
-      <List.Section title="Standard Object">
+      <List.Section title="Standard Objects">
         {standardActiveModel?.map((model) => {
           const { id, description, labelPlural, icon } = model;
           return (
             <List.Item
               id={id}
               title={labelPlural}
-              subtitle={description}
+              subtitle={description ?? ""}
               actions={
                 <ActionPanel>
                   <Action
                     title="Create Record"
                     icon={Icon.List}
                     onAction={async () => {
-                      await twenty.getRecordFieldsForDataModel(id);
+                      const objectRecordMetadata = await twenty.getRecordFieldsForDataModel(id);
+                      push(OpenCreateObjectRecordForm({ objectRecordMetadata }));
                     }}
                   />
                 </ActionPanel>
@@ -54,14 +57,14 @@ export default function CreateObjectRecord() {
           );
         })}
       </List.Section>
-      <List.Section title="Custom Object">
+      <List.Section title="Custom Objects">
         {customActiveModel?.map((model) => {
           const { id, description, labelPlural } = model;
           return (
             <List.Item
               id={id}
               title={labelPlural}
-              subtitle={description}
+              subtitle={description ?? ""}
               icon={Icon.BulletPoints}
               actions={
                 <ActionPanel>
@@ -69,7 +72,8 @@ export default function CreateObjectRecord() {
                     title="Create Record"
                     icon={Icon.List}
                     onAction={async () => {
-                      await twenty.getRecordFieldsForDataModel(id);
+                      const objectRecordMetadata = await twenty.getRecordFieldsForDataModel(id);
+                      push(OpenCreateObjectRecordForm({ objectRecordMetadata }));
                     }}
                   />
                 </ActionPanel>
