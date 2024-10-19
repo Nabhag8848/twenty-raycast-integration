@@ -5,7 +5,7 @@ import { FailureToast } from "./enum/api";
 
 import { DataModelWithFields, ObjectRecordFields } from "./services/zod/schema/recordFieldSchema";
 import { Title } from "./components";
-import { FormValidation, useForm } from "@raycast/utils";
+import { useForm } from "@raycast/utils";
 
 function CreateObjectRecordForm({
   objectRecordMetadata,
@@ -17,7 +17,6 @@ function CreateObjectRecordForm({
   const { primary } = fields;
   const { handleSubmit, itemProps } = useForm({
     async onSubmit(values) {
-      console.log(values);
       await showToast({
         style: Toast.Style.Animated,
         title: "Creating Object Record",
@@ -37,7 +36,10 @@ function CreateObjectRecordForm({
       await showToast(FailureToast);
     },
     validation: {
-      title: FormValidation.Required,
+      [primary.name]: (value) => {
+        const targetValue = value as string;
+        if (targetValue.length === 0) return "Required";
+      },
     },
   });
 
@@ -50,7 +52,7 @@ function CreateObjectRecordForm({
           </ActionPanel>
         }
       >
-        <Title values={{ primary, objectRecordMetadata }} />
+        <Title values={{ primary, objectRecordMetadata }} {...itemProps[primary.name]} />
       </Form>
     </Fragment>
   );

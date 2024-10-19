@@ -1,16 +1,18 @@
-import { Form } from "@raycast/api";
+import React, { forwardRef } from "react";
+import { Form, FormItemRef } from "@raycast/api";
 import { DataModelWithFields, ObjectRecordFields } from "../services/zod/schema/recordFieldSchema";
 
 type TitleProps = {
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   defaultValue?: string;
   objectRecordMetadata: DataModelWithFields;
   primary: ObjectRecordFields["primary"];
 };
 
-export default function Title({ values }: { values: TitleProps }) {
+// Use forwardRef to allow ref forwarding
+const Title = forwardRef<FormItemRef, { values: TitleProps }>(({ values, ...rest }, ref) => {
   const { defaultValue, objectRecordMetadata, primary } = values;
   const { labelSingular } = objectRecordMetadata;
+
   return (
     <Form.TextField
       id={primary.name}
@@ -18,6 +20,13 @@ export default function Title({ values }: { values: TitleProps }) {
       placeholder={`Enter ${labelSingular} ${primary.label}`}
       defaultValue={defaultValue}
       autoFocus
+      ref={ref as React.Ref<FormItemRef>} // Cast the ref to the correct type
+      {...rest}
     />
   );
-}
+});
+
+// Set display name for better debugging
+Title.displayName = "Title";
+
+export default Title;
