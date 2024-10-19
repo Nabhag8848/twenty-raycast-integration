@@ -51,7 +51,7 @@ export default function CreateObjectRecord() {
                   />
                 </ActionPanel>
               }
-              icon={ObjectIcons[icon] ?? Icon.BulletPoints}
+              icon={icon ? (ObjectIcons[icon] ?? Icon.BulletPoints) : Icon.BulletPoints}
               key={randomUUID().toString()}
             />
           );
