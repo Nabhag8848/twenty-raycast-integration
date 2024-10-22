@@ -4,6 +4,7 @@ import { Api } from "../enum/api";
 import fetch from "node-fetch";
 import { dataModelSchema } from "./zod/schema/dataModelSchema";
 import { dataModelsFieldsSchema } from "./zod/schema/recordFieldSchema";
+import { splitFullName } from "../helper/splitFullName";
 
 class TwentySDK {
   private url: string = "http://localhost:3000/rest";
@@ -59,14 +60,19 @@ class TwentySDK {
 
   async createObjectRecord(namePlural: string, bodyParam: any) {
     try {
+      if (namePlural === "people") {
+        bodyParam.name = splitFullName(bodyParam.name);
+      }
+
       const response = await fetch(this.url + `/${namePlural}`, {
         method: "POST",
         headers: {
+          "Content-type": "application/json",
           [Api.KEY]: this.token,
         },
-        body: {
+        body: JSON.stringify({
           ...bodyParam,
-        },
+        }),
       });
 
       if (response.ok) {
