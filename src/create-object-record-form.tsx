@@ -4,7 +4,7 @@ import { Fragment } from "react";
 import { FailureToast } from "./enum/api";
 
 import { DataModelWithFields, ObjectRecordFields } from "./services/zod/schema/recordFieldSchema";
-import { TextInput } from "./components";
+import { FieldComponent, TextInput } from "./components";
 import { useForm } from "@raycast/utils";
 import twenty from "./services/TwentySDK";
 import { createValidationsForRest } from "./helper/createValidationsForRest";
@@ -60,6 +60,9 @@ function CreateObjectRecordForm({
           values={{ field: primary, placeholder: `Enter ${labelSingular} ${primary.label}` }}
           {...itemProps[primary.name]}
         />
+        {rest.map((field) => {
+          return <FieldComponent key={field.name} values={{ field, itemProps: itemProps[field.name] }} />;
+        })}
       </Form>
     </Fragment>
   );

@@ -18,7 +18,6 @@ const TextInput = forwardRef<FormItemRef, { values: TitleProps }>(({ values, ...
       title={field.label}
       placeholder={placeholder}
       defaultValue={defaultValue}
-      autoFocus
       ref={ref as React.Ref<FormItemRef>} // Cast the ref to the correct type
       {...rest}
     />

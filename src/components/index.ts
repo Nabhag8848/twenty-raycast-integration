@@ -6,6 +6,7 @@ import StatusDropdown from "./StatusDropdown";
 import StatusFilterDropdown from "./StatusFilterDropdown";
 import DatePicker from "./DatePicker";
 import TextInput from "./TextInput";
+import FieldComponent from "./FieldComponent";
 
 export {
   MenuBarItem,
@@ -16,4 +17,5 @@ export {
   StatusFilterDropdown,
   DatePicker,
   TextInput,
+  FieldComponent,
 };
