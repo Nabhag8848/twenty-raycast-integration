@@ -4,9 +4,10 @@ import { Fragment } from "react";
 import { FailureToast } from "./enum/api";
 
 import { DataModelWithFields, ObjectRecordFields } from "./services/zod/schema/recordFieldSchema";
-import { Title } from "./components";
+import { TextInput } from "./components";
 import { useForm } from "@raycast/utils";
 import twenty from "./services/TwentySDK";
+import { createValidationsForRest } from "./helper/createValidationsForRest";
 
 function CreateObjectRecordForm({
   objectRecordMetadata,
@@ -15,8 +16,8 @@ function CreateObjectRecordForm({
   objectRecordMetadata: DataModelWithFields;
   fields: ObjectRecordFields;
 }) {
-  const { namePlural } = objectRecordMetadata;
-  const { primary } = fields;
+  const { namePlural, labelSingular } = objectRecordMetadata;
+  const { primary, rest } = fields;
   const { handleSubmit, itemProps } = useForm({
     async onSubmit(values) {
       await showToast({
@@ -42,6 +43,7 @@ function CreateObjectRecordForm({
         const targetValue = value as string;
         if (targetValue.length === 0) return "Required";
       },
+      ...createValidationsForRest(rest),
     },
   });
 
@@ -54,7 +56,10 @@ function CreateObjectRecordForm({
           </ActionPanel>
         }
       >
-        <Title values={{ primary, objectRecordMetadata }} {...itemProps[primary.name]} />
+        <TextInput
+          values={{ field: primary, placeholder: `Enter ${labelSingular} ${primary.label}` }}
+          {...itemProps[primary.name]}
+        />
       </Form>
     </Fragment>
   );

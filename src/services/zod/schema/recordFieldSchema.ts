@@ -32,7 +32,8 @@ export type DataModelWithFields = z.infer<typeof dataModelFieldsSchema>;
 
 export type DataModelsWithFields = DataModelWithFields[];
 
+export type DataModelField = DataModelWithFields["fields"][number];
 export type ObjectRecordFields = {
-  primary: DataModelWithFields["fields"][number];
+  primary: DataModelField;
   rest: DataModelWithFields["fields"];
 };

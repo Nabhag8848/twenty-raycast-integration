@@ -5,6 +5,15 @@ import PagePicker from "./PagePicker";
 import StatusDropdown from "./StatusDropdown";
 import StatusFilterDropdown from "./StatusFilterDropdown";
 import DatePicker from "./DatePicker";
-import Title from "./Title";
+import TextInput from "./TextInput";
 
-export { MenuBarItem, MessageBox, MonitorPicker, PagePicker, StatusDropdown, StatusFilterDropdown, DatePicker, Title };
+export {
+  MenuBarItem,
+  MessageBox,
+  MonitorPicker,
+  PagePicker,
+  StatusDropdown,
+  StatusFilterDropdown,
+  DatePicker,
+  TextInput,
+};
