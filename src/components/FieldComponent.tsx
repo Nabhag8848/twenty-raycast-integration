@@ -16,6 +16,7 @@ export default function FieldComponent({ values }: FieldComponentProps) {
   const { field, itemProps } = values;
   switch (field.type) {
     case "FULL_NAME":
+    case "LINKS":
     case "TEXT": {
       return <TextInput values={{ field, placeholder: `Enter ${field.name}...` }} {...itemProps} />;
     }

@@ -8,6 +8,7 @@ import { FieldComponent, TextInput } from "./components";
 import { useForm } from "@raycast/utils";
 import twenty from "./services/TwentySDK";
 import { createValidationsForRest } from "./helper/createValidationsForRest";
+import { formatValues } from "./helper/formatValues";
 
 function CreateObjectRecordForm({
   objectRecordMetadata,
@@ -25,7 +26,8 @@ function CreateObjectRecordForm({
         title: "Creating Object Record",
       });
 
-      const isSuccess = await twenty.createObjectRecord(namePlural, values);
+      const formattedValues = formatValues(values, objectRecordMetadata);
+      const isSuccess = await twenty.createObjectRecord(namePlural, formattedValues);
 
       if (isSuccess) {
         await showHUD(`${objectRecordMetadata.labelSingular} Created 🎉`, {

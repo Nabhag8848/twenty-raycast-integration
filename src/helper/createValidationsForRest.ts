@@ -5,14 +5,27 @@ export function createValidationsForRest(rest: DataModelWithFields["fields"]): a
   return rest.reduce((acc: Record<string, (value: any) => void | string>, field) => {
     switch (field.type) {
       case "TEXT":
-      case "FULL_NAME":
-      case "RICH_TEXT":
+      case "FULL_NAME": {
         acc[field.name] = (value) => {
+          if ((!field.isNullable && !value) || value.length === 0) return "Required";
+        };
+        break;
+      }
+      case "LINKS": {
+        acc[field.name] = (value) => {
+          const urlPattern = /^(https?:\/\/(localhost|[^\s$.?#].[^\s]*))$/i;
           if (!field.isNullable) {
-            if (!value || value.length === 0) return "Required";
+            if (!value) {
+              return "Required";
+            }
+          }
+
+          if (value && !urlPattern.test(value)) {
+            return "Invalid URL";
           }
         };
         break;
+      }
       case "EMAILS":
         break;
       case "PHONES":
@@ -32,7 +45,7 @@ export function createValidationsForRest(rest: DataModelWithFields["fields"]): a
       case "SELECT":
       case "MULTI_SELECT":
         break;
-      case "LINKS":
+
       case "ADDRESS":
         // Add specific validation if needed
         break;
