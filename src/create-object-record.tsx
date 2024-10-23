@@ -4,7 +4,7 @@ import { randomUUID } from "crypto";
 
 import { DataModel } from "./services/zod/schema/dataModelSchema";
 import twenty from "./services/TwentySDK";
-import { ObjectIcons } from "./enum/tag";
+import { ObjectIcons } from "./enum/icons";
 import { OpenCreateObjectRecordForm } from "./pages";
 
 export default function CreateObjectRecord() {

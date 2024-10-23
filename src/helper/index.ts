@@ -1,18 +1,4 @@
-import { getDefaultMonitors, getDefaultMonitorsId, getDefaultPages, getDefaultPagesId } from "./getDefault";
-import { getTimeAgoFromISO } from "./getTimeAgoFromISO";
-import { isFormFilled } from "./isFormFilled";
-import { validateRequiredField } from "./validateRequiredField";
-import { filterByQuery } from "./filterByQuery";
-import { filterByStatus } from "./filterByStatus";
+import { createValidationsForRest } from "./createValidationsForRest";
+import { splitFullName } from "./splitFullName";
 
-export {
-  filterByQuery,
-  filterByStatus,
-  getDefaultMonitors,
-  getDefaultMonitorsId,
-  getDefaultPages,
-  getDefaultPagesId,
-  getTimeAgoFromISO,
-  isFormFilled,
-  validateRequiredField,
-};
+export { createValidationsForRest, splitFullName };

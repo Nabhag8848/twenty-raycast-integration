@@ -4,7 +4,7 @@ import { Api } from "../enum/api";
 import fetch from "node-fetch";
 import { dataModelSchema } from "./zod/schema/dataModelSchema";
 import { dataModelsFieldsSchema } from "./zod/schema/recordFieldSchema";
-import { splitFullName } from "../helper/splitFullName";
+import { splitFullName } from "../helper";
 
 class TwentySDK {
   private url: string = "http://localhost:3000/rest";
