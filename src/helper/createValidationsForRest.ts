@@ -45,9 +45,7 @@ export function createValidationsForRest(rest: DataModelWithFields["fields"]): a
       case "SELECT":
       case "MULTI_SELECT":
         break;
-
       case "ADDRESS":
-        // Add specific validation if needed
         break;
       default:
         break;

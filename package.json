@@ -30,7 +30,9 @@
       "description": "Enter your self-host API URL (Optional)",
       "type": "textfield",
       "title": "Self Host API URL",
-      "required": false
+      "required": false,
+      "default": "https://api.twenty.com",
+      "placeholder": "https://api.twenty.com (default)"
     }
   ],
   "dependencies": {

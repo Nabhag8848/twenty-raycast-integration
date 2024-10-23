@@ -6,12 +6,13 @@ import { dataModelSchema } from "./zod/schema/dataModelSchema";
 import { dataModelsFieldsSchema } from "./zod/schema/recordFieldSchema";
 
 class TwentySDK {
-  private url: string = "http://localhost:3000/rest";
+  private url!: string;
   private token!: string;
 
   constructor() {
-    const { api_token }: { api_token: string } = getPreferenceValues();
+    const { api_token, self_host_api_url }: { api_token: string; self_host_api_url: string } = getPreferenceValues();
     this.token = `Bearer ${api_token}`;
+    this.url = self_host_api_url ? `${self_host_api_url}/rest` : `https://api.twenty.com/rest`;
   }
 
   async getActiveDataModels() {
