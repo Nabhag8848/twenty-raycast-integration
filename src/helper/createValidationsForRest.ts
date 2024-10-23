@@ -13,15 +13,21 @@ export function createValidationsForRest(rest: DataModelWithFields["fields"]): a
       }
       case "LINKS": {
         acc[field.name] = (value) => {
-          const urlPattern = /^(https?:\/\/(localhost|[^\s$.?#].[^\s]*))$/i;
+          const urlPattern =
+            /^(https?:\/\/(localhost|[^\s$.?#].[^\s]*))?|([^\s$.?#].[^\s]*)(,\s*(https?:\/\/(localhost|[^\s$.?#].[^\s]*))?|([^\s$.?#].[^\s]*))*$/i;
           if (!field.isNullable) {
             if (!value) {
               return "Required";
             }
           }
 
-          if (value && !urlPattern.test(value)) {
-            return "Invalid URL";
+          if (value) {
+            const urls = value.split(",");
+            for (const url of urls) {
+              if (!urlPattern.test(url.trim())) {
+                return "Invalid URL";
+              }
+            }
           }
         };
         break;
