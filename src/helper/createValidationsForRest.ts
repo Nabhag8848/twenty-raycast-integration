@@ -15,25 +15,43 @@ export function createValidationsForRest(rest: DataModelWithFields["fields"]): a
         acc[field.name] = (value) => {
           const urlPattern =
             /^(https?:\/\/(localhost|[^\s$.?#].[^\s]*))?|([^\s$.?#].[^\s]*)(,\s*(https?:\/\/(localhost|[^\s$.?#].[^\s]*))?|([^\s$.?#].[^\s]*))*$/i;
-          if (!field.isNullable) {
-            if (!value) {
-              return "Required";
-            }
-          }
 
           if (value) {
             const urls = value.split(",");
             for (const url of urls) {
               if (!urlPattern.test(url.trim())) {
-                return "Invalid URL";
+                return `Invalid ${field.name}`;
               }
+            }
+          }
+
+          if (!field.isNullable) {
+            if (!value) {
+              return "Required";
             }
           }
         };
         break;
       }
-      case "EMAILS":
+      case "EMAILS": {
+        acc[field.name] = (value) => {
+          const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+          if (value) {
+            const emails = value.split(",");
+            for (const email of emails) {
+              if (!emailPattern.test(email.trim())) {
+                return `Invalid ${field.name}`;
+              }
+            }
+          }
+
+          if (!field.isNullable && (!value || value.length === 0)) {
+            return "Required";
+          }
+        };
         break;
+      }
       case "PHONES":
         break;
       case "DATE":

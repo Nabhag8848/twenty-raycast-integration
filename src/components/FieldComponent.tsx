@@ -17,6 +17,7 @@ export default function FieldComponent({ values }: FieldComponentProps) {
   switch (field.type) {
     case "FULL_NAME":
     case "LINKS":
+    case "EMAILS":
     case "TEXT": {
       return <TextInput values={{ field, placeholder: `Enter ${field.name}...` }} {...itemProps} />;
     }

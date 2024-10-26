@@ -8,7 +8,7 @@ export default function OpenCreateObjectRecordForm({
 }) {
 
   // Reason: Currently we don't have a way to know if its which field is primary, we can fix this hard coding. 
-  // Something like a flag field (isPrimary) or maybe a TITLE type for primary in API
+  // Something like a flag field (isPrimary) or maybe a TITLE type for primary in API or position
   const isPrimaryFieldTitle =
     objectRecordMetadata.labelPlural === "Tasks" || objectRecordMetadata.labelPlural === "Notes";
 

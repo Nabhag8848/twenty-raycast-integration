@@ -1,5 +1,6 @@
 import { DataModelWithFields } from "../services/zod/schema/recordFieldSchema";
 import { splitFullName } from "./splitFullName";
+import { createTwentyEmailObject } from "./twentyEmailObject";
 import { createTwentyUrlObject } from "./twentyUrlObject";
 
 export function formatValues(values: Record<string, any>, objectRecordMetadata: DataModelWithFields) {
@@ -16,6 +17,10 @@ export function formatValues(values: Record<string, any>, objectRecordMetadata: 
           break;
         case "FULL_NAME": {
           formattedValues[key] = splitFullName(values[key]);
+          break;
+        }
+        case "EMAILS": {
+          formattedValues[key] = createTwentyEmailObject(values[key]);
           break;
         }
         default:
