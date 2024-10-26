@@ -5,4 +5,8 @@ declare module "@raycast/api" {
     focus: () => void;
     reset: () => void;
   }
+
+  type ItemProps = Partial<Form.ItemProps<any>> & {
+    id: string;
+  };
 }

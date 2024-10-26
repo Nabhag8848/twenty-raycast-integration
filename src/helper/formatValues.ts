@@ -23,6 +23,12 @@ export function formatValues(values: Record<string, any>, objectRecordMetadata: 
           formattedValues[key] = createTwentyEmailObject(values[key]);
           break;
         }
+        case "SELECT": {
+          if (formattedValues[key] === "") {
+            formattedValues[key] = null;
+          }
+          break;
+        }
         default:
           break;
       }

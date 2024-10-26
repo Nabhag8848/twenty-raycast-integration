@@ -22,6 +22,19 @@ export const dataModelFieldsSchema = z.object({
       isActive: z.boolean(),
       isSystem: z.boolean(),
       isNullable: z.boolean(),
+      defaultValue: z.any().nullable(),
+      options: z
+        .array(
+          z.object({
+            id: z.string().nullish(),
+            color: z.string().nullish(),
+            label: z.string().nullish(),
+            value: z.string().nullish(),
+            position: z.number().nullish(),
+          }),
+        )
+        .nonempty()
+        .nullish(),
     }),
   ),
 });

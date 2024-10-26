@@ -1,10 +1,7 @@
-import { Form } from "@raycast/api";
+import { ItemProps } from "@raycast/api";
 import { DataModelField } from "../services/zod/schema/recordFieldSchema";
 import TextInput from "./TextInput";
-
-type ItemProps = Partial<Form.ItemProps<any>> & {
-  id: string;
-};
+import Select from "./Select";
 
 type FieldComponentProps = {
   values: {
@@ -20,6 +17,9 @@ export default function FieldComponent({ values }: FieldComponentProps) {
     case "EMAILS":
     case "TEXT": {
       return <TextInput values={{ field, placeholder: `Enter ${field.name}...` }} {...itemProps} />;
+    }
+    case "SELECT": {
+      return <Select values={{ field }} />;
     }
     default:
       return <></>;
