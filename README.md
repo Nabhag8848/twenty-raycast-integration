@@ -8,6 +8,7 @@ Twenty simplifies CRM management, empowering businesses to enhance productivity 
 ### <i>Create Object Record</i>
 With `Create Object Record` command, effortlessly create records in any standard or custom object. Search command press Enter to see active objects, then press `CMD + Enter` to unveil a form that fills in your record seamlessly into the CRM table — making CRM magic happen!
 
+---
 
 ## Getting Started
 
@@ -26,28 +27,38 @@ if you are selfhost user navigate to `<self-host-url>/settings/developers`, once
   </tr>
 </table>
 
+
 ---
 
+## User Guide
+To use the integration, search for the `Create Object Record` command, which will display all your `active` standard and custom objects currently in your twentyCRM. Its very flexible - if you create new objects or deactivate existing ones, this will automatically reflect those changes.
 
-# 1
 https://github.com/user-attachments/assets/fca0f71d-3c04-43ad-afb4-4e5b0a9d4d13
 
-# 2
+When you deactivate any standard or custom object, it will no longer appear, ensuring you only see the information and objects you want to access. This makes the integration extensible and enhances your productivity.
+
 https://github.com/user-attachments/assets/f357b91b-dd2e-4043-af8c-9328235c0aa8
 
-# 3
+If you create new custom objects, they will appear, allowing you to quickly create your records instantly from Raycast.
+
 https://github.com/user-attachments/assets/f0d8fa96-468b-42e4-a11c-a9e4a47ce412
 
-# 4 
+
+To create a record for any object, select your target object and press `CMD + ENTER`. This will open a form that matches the exact table schema you created in your CRM, following any validations it suggests to successfully create your record. Records cannot be created with an empty first column (such as Name, Title, etc.).
+
 https://github.com/user-attachments/assets/6f8d7127-63a6-4113-ac6a-5ea3003c5f0c
 
-# 5
+Similar to creation of standard object you can create custom objects
+
 https://github.com/user-attachments/assets/098e120c-ac58-4f41-9560-2782c798d6bd
 
-# 6
+It's much more flexible—similar to objects, if you deactivate any fields, they will no longer appear in your object schema during record creation.
+
 https://github.com/user-attachments/assets/2686c7c0-dfde-4445-93be-17d10cf22d60
 
-# 7
+
+No worries! If you add or update any fields in your standard objects, they will automatically appear in your object schema form in Raycast, looking closely you will see, if you add a select field with a default value provided some icon, it will display exactly what you’ve set when creation.
+
 https://github.com/user-attachments/assets/697da72b-1ca2-4493-b61c-d393b77b34f6
 
 
