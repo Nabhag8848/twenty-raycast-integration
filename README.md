@@ -27,3 +27,41 @@ if you are selfhost user navigate to `<self-host-url>/settings/developers`, once
 </table>
 
 ---
+
+
+# 1
+https://github.com/user-attachments/assets/fca0f71d-3c04-43ad-afb4-4e5b0a9d4d13
+
+# 2
+https://github.com/user-attachments/assets/f357b91b-dd2e-4043-af8c-9328235c0aa8
+
+# 3
+https://github.com/user-attachments/assets/f0d8fa96-468b-42e4-a11c-a9e4a47ce412
+
+# 4 
+https://github.com/user-attachments/assets/6f8d7127-63a6-4113-ac6a-5ea3003c5f0c
+
+# 5
+https://github.com/user-attachments/assets/098e120c-ac58-4f41-9560-2782c798d6bd
+
+# 6
+https://github.com/user-attachments/assets/2686c7c0-dfde-4445-93be-17d10cf22d60
+
+# 7
+https://github.com/user-attachments/assets/697da72b-1ca2-4493-b61c-d393b77b34f6
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
