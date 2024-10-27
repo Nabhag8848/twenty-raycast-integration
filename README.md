@@ -89,10 +89,14 @@ Don't forget to give the project a star! Thanks again!
 
 If you love my work and would like to support me, consider becoming a [GitHub sponsor](https://github.com/sponsors/Nabhag8848)
 
+## Roadmap
 
-
-
-
+- [x] Currently we support `FULL_NAME`, `TEXT`, `LINKS`, `EMAILS`, `SELECT`.
+- [x] Supporting other fields are easy as we have build the foundation and its quite similar to what we have already build.
+- [ ] PHONE_NUMBER, CURRENCY similar to LINKS
+- [ ] RATING (1, 2, 3, 4, 5 as option), BOOLEAN (True or False as option), MULTI_SELECT are similar to SELECT
+- [ ] RELATION Similar to SELECT but requires additional work but doable
+- [ ] support seeing records of all objects
 
 
 
