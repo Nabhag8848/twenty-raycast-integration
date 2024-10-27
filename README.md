@@ -44,11 +44,11 @@ If you create new custom objects, they will appear, allowing you to quickly crea
 https://github.com/user-attachments/assets/f0d8fa96-468b-42e4-a11c-a9e4a47ce412
 
 
-To create a record for any object, select your target object and press `CMD + ENTER`. This will open a form that matches the exact table schema you created in your CRM, following any validations it suggests to successfully create your record. Records cannot be created with an empty first column (such as Name, Title, etc.).
+To create a record for any object, select your target object and press `ENTER`. This will open a form that matches the exact table schema you created in your CRM, following any validations it suggests to successfully create your record by pressing `CMD + ENTER`. Records cannot be created with an empty first column (such as Name, Title, etc.).
 
 https://github.com/user-attachments/assets/6f8d7127-63a6-4113-ac6a-5ea3003c5f0c
 
-Similar to creation of standard object you can create custom objects
+Similar to creation of standard object record you can create custom objects record
 
 https://github.com/user-attachments/assets/098e120c-ac58-4f41-9560-2782c798d6bd
 
