@@ -85,6 +85,9 @@ Don't forget to give the project a star! Thanks again!
        
 </div>
 
+## Support my work
+
+If you love my work and would like to support me, consider becoming a [GitHub sponsor](https://github.com/sponsors/Nabhag8848)
 
 
 
