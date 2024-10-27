@@ -61,6 +61,30 @@ No worries! If you add or update any fields in your standard objects, they will 
 
 https://github.com/user-attachments/assets/697da72b-1ca2-4493-b61c-d393b77b34f6
 
+## 🧑‍💻 Contributing
+
+Contributions are what make the open source community such an amazing place to learn, inspire, and create. Any contributions you make are **greatly appreciated**.
+
+If you have a suggestion that would make this better, please fork the repo and create a pull request. You can also simply open an issue.
+Don't forget to give the project a star! Thanks again!
+
+1. Fork the Project
+2. Create your Feature Branch (`git checkout -b feat/AmazingFeature`)
+3. Install Dependency (`npm install`) & follow getting started guide for api key.
+4. Commit your Changes (`git commit -m 'feat: adds some amazing feature'`)
+5. Push to the Branch (`git push origin feat/AmazingFeature`)
+6. Open a Pull Request
+
+
+## 💬 Connect With Me
+<div align="center">
+
+| **Name** | Nabhag Motivaras |
+|:--------------------|:-------------------|
+| **Twitter** | [@NabhagMotivaras](https://x.com/NabhagMotivaras) | 
+       
+</div>
+
 
 
 
