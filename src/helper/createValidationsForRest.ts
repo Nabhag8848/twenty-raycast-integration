@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { DataModelWithFields } from "../services/zod/schema/recordFieldSchema";
 
 export function createValidationsForRest(rest: DataModelWithFields["fields"]): any {

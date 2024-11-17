@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import "@raycast/api";
 
 declare module "@raycast/api" {
