@@ -4,6 +4,13 @@ import { Api } from "../enum/api";
 import fetch from "node-fetch";
 import { dataModelSchema } from "./zod/schema/dataModelSchema";
 import { dataModelsFieldsSchema } from "./zod/schema/recordFieldSchema";
+import { z } from "zod";
+
+const GetActiveDataModelsSchema = z.object({
+  data: z.object({
+    objects: dataModelSchema,
+  }),
+});
 
 class TwentySDK {
   private url!: string;
@@ -16,21 +23,23 @@ class TwentySDK {
   }
 
   async getActiveDataModels() {
-    try {
-      const response = await fetch(this.url + "/metadata/objects", {
-        method: "GET",
-        headers: {
-          "Content-Type": "application/json",
-          [Api.KEY]: this.token,
-        },
-      });
-      const data = (await response.json()) as any;
-      const dataModel = await dataModelSchema.parseAsync(data?.data?.objects);
-      const activeDataModel = await dataModel.filter((model) => !model.isSystem && model.isActive);
-      return activeDataModel;
-    } catch (err) {
-      throw new Error(err as string);
-    }
+    const response = await fetch(this.url + "/metadata/objects", {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        [Api.KEY]: this.token,
+      },
+    });
+
+    const rawData = await response.json();
+
+    const data = GetActiveDataModelsSchema.parse(rawData);
+
+    const dataModel = data.data.objects;
+
+    const activeDataModel = dataModel.filter((model) => !model.isSystem && model.isActive);
+
+    return activeDataModel;
   }
 
   async getRecordFieldsForDataModel(id: string) {
