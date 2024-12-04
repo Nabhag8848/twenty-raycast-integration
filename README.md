@@ -4,6 +4,8 @@ moved to https://github.com/raycast/extensions/tree/main/extensions/twenty
 
 <h1 align="left"> 🔥 Twenty Raycast Integration </h1>
 
+<a title="Install twenty Raycast Extension" href="https://www.raycast.com/NabhagMotivaras/twenty"><img src="https://www.raycast.com/NabhagMotivaras/twenty/install_button@2x.png?v=1.1" height="64" alt="" style="height: 64px;"></a>
+
 Twenty simplifies CRM management, empowering businesses to enhance productivity and drive growth. With this Raycast integration, record creation across standard and custom objects is now at your fingertips, making your workflow effortless and efficient. Experience how easy it is to use this Raycast for seamless record creation!
 
 ## $\{\textcolor{#39FF14}{\textbf{🤝 Create records instantly across Standard and Custom Objects!}}}$
