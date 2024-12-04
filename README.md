@@ -1,3 +1,7 @@
+### As the codebase for this repository has been moved to the raycast repository and extension is published, this repository have been archived. Looking to contribute or have some feature suggestion ? 
+
+moved to https://github.com/raycast/extensions/tree/main/extensions/twenty
+
 <h1 align="left"> 🔥 Twenty Raycast Integration </h1>
 
 Twenty simplifies CRM management, empowering businesses to enhance productivity and drive growth. With this Raycast integration, record creation across standard and custom objects is now at your fingertips, making your workflow effortless and efficient. Experience how easy it is to use this Raycast for seamless record creation!
